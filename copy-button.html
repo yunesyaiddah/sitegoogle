@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pesan Kedua - Copy</title>
+</head>
+
+<body style="font-family: sans-serif; background: #f4faff; padding: 20px;">
+
+    <div style="background-color: #d9f0ff; padding: 15px 20px; border-radius: 8px; position: relative; max-width: 500px;">
+        <strong style="display: block; margin-bottom: 8px;">PESAN KEDUA</strong>
+        <p id="text-to-copy" style="margin: 0;">
+            Aku mau tanya, Kak. Apakah Kakak udah coba pakai limit Kredivonya? Bisa dipakai buat transaksi sehari-hari juga lho, Kak.
+        </p>
+        <button id="copy-btn" onclick="copyText()" style="position: absolute; top: 15px; right: 15px; background: #f5f5f5; border: none; padding: 4px 10px; border-radius: 12px; font-size: 14px; cursor: pointer;">
+    Salin
+  </button>
+    </div>
+
+    <script>
+        function copyText() {
+            const text = document.getElementById("text-to-copy").innerText;
+            const btn = document.getElementById("copy-btn");
+            navigator.clipboard.writeText(text).then(() => {
+                btn.innerText = "Tersalin ✓";
+                setTimeout(() => btn.innerText = "Salin", 2000);
+            }).catch(err => {
+                console.error("Gagal menyalin teks: ", err);
+            });
+        }
+    </script>
+
+</body>
+
+</html>
