@@ -123,7 +123,7 @@
             <p class="text-to-copy">
                 Hai Kak [nama user]! Aku [nama SPG] dari Kredivo yang bantu Kakak daftar akun Kakak waktu itu.
             </p>
-            <button class="btn-copy">Salin</button>
+            <button class="btn-copy" onclick="copyText(this)">Salin</button>
         </div>
 
         <!-- Pesan 2 -->
@@ -132,7 +132,7 @@
             <p class="text-to-copy">
                 Aku mau tanya, Kak. Apakah Kakak udah coba pakai limit Kredivonya? Bisa dipakai buat transaksi sehari-hari juga lho, Kak.
             </p>
-            <button class="btn-copy">Salin</button>
+            <button class="btn-copy" onclick="copyText(this)">Salin</button>
         </div>
 
         <!-- Pesan INTI -->
@@ -142,7 +142,7 @@
             <p class="text-to-copy">
                 Aku mau info kalau Kakak beli pulsa di aplikasi Kredivo ada diskon s.d. 50rb. Aku kirimin gambarnya juga ya, Kak
             </p>
-            <button class="btn-copy">Salin</button>
+            <button class="btn-copy" onclick="copyText(this)">Salin</button>
 
             <!-- Gambar -->
             <div class="title-gambar">Gambar</div>
@@ -161,34 +161,23 @@
             <p class="text-to-copy">
                 Kalau Kakak ada pertanyaan tentang cicilan dan penggunaan limit Kredivo, jangan ragu untuk kontak aku ya. Terima kasih, Kak.
             </p>
-            <button class="btn-copy">Salin</button>
+            <button class="btn-copy" onclick="copyText(this)">Salin</button>
         </div>
     </details>
 
     <script>
         // Fungsi Salin
-        document.querySelectorAll(".btn-copy").forEach((btn, index) => {
-            btn.addEventListener("click", () => {
-                const textElement = btn.parentElement.querySelector(".text-to-copy");
-                const range = document.createRange();
-                range.selectNode(textElement);
-                window.getSelection().removeAllRanges();
-                window.getSelection().addRange(range);
+        function copyText(btn) {
+            const textElement = btn.parentElement.querySelector(".text-to-copy");
+            const text = textElement.innerText;
 
-                try {
-                    const successful = document.execCommand('copy');
-                    if (successful) {
-                        btn.innerText = "Tersalin ✓";
-                        setTimeout(() => btn.innerText = "Salin", 2000);
-                    } else {
-                        alert("Gagal menyalin teks");
-                    }
-                } catch (err) {
-                    alert("Browser tidak mendukung copy otomatis");
-                }
-                window.getSelection().removeAllRanges();
+            navigator.clipboard.writeText(text).then(() => {
+                btn.innerText = "Tersalin ✓";
+                setTimeout(() => btn.innerText = "Salin", 2000);
+            }).catch(() => {
+                alert("Gagal menyalin teks");
             });
-        });
+        }
 
         // Fungsi Download Semua Gambar
         function downloadAllImages() {
