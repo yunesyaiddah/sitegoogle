@@ -1,90 +1,151 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Pesan Kedua + Download Images</title>
+<meta charset="UTF-8">
+<title>Template Chat</title>
+<style>
+  body {
+    font-family: sans-serif;
+    background: #fafafa;
+    padding: 20px;
+    color: #333;
+  }
+  details {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-bottom: 15px;
+  }
+  summary {
+    padding: 12px 16px;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+  }
+  .section-header {
+    background: #e3f2fd;
+    padding: 12px 16px;
+    font-weight: 600;
+  }
+  .message-box {
+    background: #d9f0ff;
+    padding: 15px;
+    margin: 10px 16px;
+    border-radius: 8px;
+    position: relative;
+  }
+  .message-box strong {
+    display: block;
+    margin-bottom: 8px;
+  }
+  .copy-btn, .download-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #f5f5f5;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .images {
+    display: flex;
+    gap: 15px;
+    margin-top: 12px;
+  }
+  .images img {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    background: #eee;
+    border-radius: 4px;
+  }
+</style>
 </head>
+<body>
 
-<body style="font-family: sans-serif; background: #f4faff; padding: 20px;">
+<details open>
+  <summary>Hari 1-14</summary>
+  <div class="section-header">
+    Tipe Transaksi<br>
+    Waktu Pengiriman & Isi Pesan<br>
+    Isi Chat
+  </div>
 
-    <!-- Pesan Kedua -->
-    <div style="background-color: #d9f0ff; padding: 15px 20px; border-radius: 8px; position: relative; max-width: 500px; margin-bottom: 20px;">
-        <strong style="display: block; margin-bottom: 8px;">PESAN KEDUA</strong>
-        <p id="text-to-copy" style="margin: 0;">
-            Aku mau tanya, Kak. Apakah Kakak udah coba pakai limit Kredivonya? Bisa dipakai buat transaksi sehari-hari juga lho, Kak.
-        </p>
-        <button id="copy-btn" onclick="copyText()" style="position: absolute; top: 15px; right: 15px; background: #f5f5f5; border: none; padding: 4px 10px; border-radius: 12px; font-size: 14px; cursor: pointer;">
-    Salin
-  </button>
+  <!-- Pesan Pertama -->
+  <div class="message-box">
+    <strong>PESAN PERTAMA</strong>
+    <p id="msg1">Hai Kak [nama user]! Aku [nama SPG] dari Kredivo yang bantu Kakak daftar akun Kakak waktu itu.</p>
+    <button class="copy-btn" onclick="copyText('msg1', this)">Salin</button>
+  </div>
+
+  <!-- Pesan Kedua -->
+  <div class="message-box">
+    <strong>PESAN KEDUA</strong>
+    <p id="msg2">Aku mau tanya, Kak. Apakah Kakak udah coba pakai limit Kredivonya? Bisa dipakai buat transaksi sehari-hari juga lho, Kak.</p>
+    <button class="copy-btn" onclick="copyText('msg2', this)">Salin</button>
+  </div>
+
+  <!-- Pesan Penutup -->
+  <div class="message-box">
+    <strong>PESAN PENUTUP</strong>
+    <p id="msg3">Kalau Kakak ada pertanyaan tentang cicilan dan penggunaan limit Kredivo, jangan ragu untuk kontak aku ya. Terima kasih, Kak.</p>
+    <button class="copy-btn" onclick="copyText('msg3', this)">Salin</button>
+  </div>
+
+  <!-- Pesan Inti -->
+  <div class="message-box">
+    <strong>PESAN INTI <small>(dikirim setelah dapat balasan pengguna ATAU jika tidak dibalas dalam 4 jam):</small></strong>
+    <p id="msg4">Aku mau kasi info diskon nih, Kak. Ada diskon sampai 100rb kalau Kakak belanja di Indomaret/Alfamart dan pembayarannya pakai Kredivo. Aku kirimin gambarnya juga ya, Kak.</p>
+    <button class="copy-btn" onclick="copyText('msg4', this)">Salin</button>
+
+    <div style="margin-top: 10px; font-weight: bold;">Gambar</div>
+    <button class="download-btn" style="top:auto; bottom:15px;" onclick="downloadAllImages()">Unduh</button>
+    <div class="images">
+      <img src="https://kredivo.id/wp-content/uploads/2025/06/icon-keunggulan-1.png" alt="Gambar 1">
+      <img src="https://kredivo.id/wp-content/uploads/2025/06/icon-keunggulan-3.png" alt="Gambar 2">
+      <img src="https://kredivo.id/wp-content/uploads/2025/06/icon-keunggulan-2.png" alt="Gambar 3">
     </div>
+  </div>
+</details>
 
-    <!-- Gambar Icon -->
-    <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 20px;">
-        <img src="https://kredivo.id/wp-content/uploads/2025/06/icon-keunggulan-1.png" alt="Icon 1" width="100">
-        <img src="https://kredivo.id/wp-content/uploads/2025/06/icon-keunggulan-3.png" alt="Icon 2" width="100">
-        <img src="https://kredivo.id/wp-content/uploads/2025/06/icon-keunggulan-2.png" alt="Icon 3" width="100">
-        <img src="https://kredivo.id/wp-content/uploads/2025/06/icon-keunggulan-4.png" alt="Icon 4" width="100">
-    </div>
+<script>
+function copyText(id, btn) {
+  const text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.innerText = "Tersalin ✓";
+    setTimeout(() => btn.innerText = "Salin", 2000);
+  }).catch(() => alert("Gagal menyalin teks"));
+}
 
-    <!-- Tombol Download Semua Gambar -->
-    <button onclick="downloadAllImages()" style="background: #f5f5f5; border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer;">
-  Download Semua Gambar
-</button>
+function downloadAllImages() {
+  const urls = [
+    "https://kredivo.id/wp-content/uploads/2025/06/icon-keunggulan-1.png",
+    "https://kredivo.id/wp-content/uploads/2025/06/icon-keunggulan-3.png",
+    "https://kredivo.id/wp-content/uploads/2025/06/icon-keunggulan-2.png"
+  ];
 
-    <script>
-        // Fungsi Salin Teks
-        function copyText() {
-            const textElement = document.getElementById("text-to-copy");
-            const range = document.createRange();
-            range.selectNode(textElement);
-            window.getSelection().removeAllRanges();
-            window.getSelection().addRange(range);
-            try {
-                const successful = document.execCommand('copy');
-                const btn = document.getElementById("copy-btn");
-                if (successful) {
-                    btn.innerText = "Tersalin ✓";
-                    setTimeout(() => btn.innerText = "Salin", 2000);
-                } else {
-                    alert('Gagal menyalin teks');
-                }
-            } catch (err) {
-                alert('Browser tidak mendukung copy otomatis');
-            }
-            window.getSelection().removeAllRanges();
-        }
-
-        // Fungsi Download Semua Gambar
-        function downloadAllImages() {
-            const urls = [
-                "https://kredivo.id/wp-content/uploads/2025/06/icon-keunggulan-1.png",
-                "https://kredivo.id/wp-content/uploads/2025/06/icon-keunggulan-3.png",
-                "https://kredivo.id/wp-content/uploads/2025/06/icon-keunggulan-2.png",
-                "https://kredivo.id/wp-content/uploads/2025/06/icon-keunggulan-4.png"
-            ];
-
-            let i = 0;
-
-            function downloadNext() {
-                if (i >= urls.length) return;
-                fetch(urls[i])
-                    .then(res => res.blob())
-                    .then(blob => {
-                        const link = document.createElement("a");
-                        link.href = URL.createObjectURL(blob);
-                        link.download = urls[i].split("/").pop();
-                        document.body.appendChild(link);
-                        link.click();
-                        document.body.removeChild(link);
-                        i++;
-                        setTimeout(downloadNext, 800); // jeda agar browser tidak blokir
-                    });
-            }
-            downloadNext();
-        }
-    </script>
+  let i = 0;
+  function downloadNext() {
+    if (i >= urls.length) return;
+    fetch(urls[i])
+      .then(res => res.blob())
+      .then(blob => {
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = urls[i].split("/").pop();
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        i++;
+        setTimeout(downloadNext, 800);
+      });
+  }
+  downloadNext();
+}
+</script>
 
 </body>
-
 </html>
