@@ -111,6 +111,7 @@
 
     <div class="side-bar">1st<br/>Transaction</div>
     <div class="spacing-mo">VINTAGE PENGGUNA : MO</div>
+
     <details open>
         <summary>Hari 1-14</summary>
         <div class="section-header">
@@ -135,24 +136,26 @@
             <button class="btn-copy" onclick="copyText(this)">Salin</button>
         </div>
 
-        <!-- Pesan INTI -->
+        <!-- Pesan Inti -->
         <div class="message-box">
             <strong>PESAN INTI</strong>
-            <span class="small">(dikirim setelah dapat balasan pengguna ATAU jika tidak dibalas dalam 4 jam)</span>
+            <span class="small">(dikirim setelah dapat balasan pengguna ATAU jika tidak dibalas dalam 4 jam):</span>
             <p class="text-to-copy">
-                Aku mau info kalau Kakak beli pulsa di aplikasi Kredivo ada diskon s.d. 50rb. Aku kirimin gambarnya juga ya, Kak
+                Aku mau info kalau Kakak beli pulsa di aplikasi Kredivo ada diskon s.d. 50rb. Aku kirimin gambarnya juga ya, Kak.
             </p>
             <button class="btn-copy" onclick="copyText(this)">Salin</button>
 
             <!-- Gambar -->
             <div class="title-gambar">Gambar</div>
             <div class="images-download">
-                <img src="https://kredivo.id/wp-content/uploads/2025/06/icon-keunggulan-1.png" width="100">
-                <img src="https://kredivo.id/wp-content/uploads/2025/06/icon-keunggulan-3.png" width="100">
-                <img src="https://kredivo.id/wp-content/uploads/2025/06/icon-keunggulan-2.png" width="100">
-                <img src="https://kredivo.id/wp-content/uploads/2025/06/icon-keunggulan-4.png" width="100">
+                <img src="https://kredivo.id/wp-content/uploads/2025/06/icon-keunggulan-1.png" alt="Icon 1" width="100">
+                <img src="https://kredivo.id/wp-content/uploads/2025/06/icon-keunggulan-3.png" alt="Icon 2" width="100">
+                <img src="https://kredivo.id/wp-content/uploads/2025/06/icon-keunggulan-2.png" alt="Icon 3" width="100">
+                <img src="https://kredivo.id/wp-content/uploads/2025/06/icon-keunggulan-4.png" alt="Icon 4" width="100">
             </div>
-            <button onclick="downloadAllImages()">Download Semua Gambar</button>
+            <button onclick="downloadAllImages()" style="background:#f5f5f5;border:none;padding:8px 14px;border-radius:6px;cursor:pointer;">
+      Download Semua Gambar
+    </button>
         </div>
 
         <!-- Pesan Penutup -->
@@ -166,20 +169,18 @@
     </details>
 
     <script>
-        // Fungsi Salin
-          // Fungsi Salin
+        // Fungsi Salin (trik textarea hidden biar jalan di Google Sites)
         function copyText(btn) {
             const textElement = btn.parentElement.querySelector(".text-to-copy");
             const text = textElement.innerText;
 
-            // bikin textarea tersembunyi
             const textarea = document.createElement("textarea");
             textarea.value = text;
             document.body.appendChild(textarea);
             textarea.select();
 
             try {
-                const successful = document.execCommand('copy');
+                const successful = document.execCommand("copy");
                 if (successful) {
                     btn.innerText = "Tersalin ✓";
                     setTimeout(() => btn.innerText = "Salin", 2000);
@@ -192,7 +193,6 @@
 
             document.body.removeChild(textarea);
         }
-
 
         // Fungsi Download Semua Gambar
         function downloadAllImages() {
