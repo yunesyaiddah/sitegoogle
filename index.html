@@ -167,17 +167,32 @@
 
     <script>
         // Fungsi Salin
+          // Fungsi Salin
         function copyText(btn) {
             const textElement = btn.parentElement.querySelector(".text-to-copy");
             const text = textElement.innerText;
 
-            navigator.clipboard.writeText(text).then(() => {
-                btn.innerText = "Tersalin ✓";
-                setTimeout(() => btn.innerText = "Salin", 2000);
-            }).catch(() => {
-                alert("Gagal menyalin teks");
-            });
+            // bikin textarea tersembunyi
+            const textarea = document.createElement("textarea");
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    btn.innerText = "Tersalin ✓";
+                    setTimeout(() => btn.innerText = "Salin", 2000);
+                } else {
+                    alert("Gagal menyalin teks");
+                }
+            } catch (err) {
+                alert("Browser tidak mendukung copy otomatis");
+            }
+
+            document.body.removeChild(textarea);
         }
+
 
         // Fungsi Download Semua Gambar
         function downloadAllImages() {
