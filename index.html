@@ -1,151 +1,92 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<title>Template Chat</title>
-<style>
-  body {
-    font-family: sans-serif;
-    background: #fafafa;
-    padding: 20px;
-    color: #333;
-  }
-  details {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    margin-bottom: 15px;
-  }
-  summary {
-    padding: 12px 16px;
-    font-weight: bold;
-    font-size: 18px;
-    cursor: pointer;
-    border-bottom: 1px solid #ddd;
-  }
-  .section-header {
-    background: #e3f2fd;
-    padding: 12px 16px;
-    font-weight: 600;
-  }
-  .message-box {
-    background: #d9f0ff;
-    padding: 15px;
-    margin: 10px 16px;
-    border-radius: 8px;
-    position: relative;
-  }
-  .message-box strong {
-    display: block;
-    margin-bottom: 8px;
-  }
-  .copy-btn, .download-btn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: #f5f5f5;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 12px;
-    font-size: 14px;
-    cursor: pointer;
-  }
-  .images {
-    display: flex;
-    gap: 15px;
-    margin-top: 12px;
-  }
-  .images img {
-    width: 150px;
-    height: 100px;
-    object-fit: cover;
-    background: #eee;
-    border-radius: 4px;
-  }
-</style>
+  <meta charset="UTF-8">
+  <title>Script Pesan Kredivo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fafafa;
+      margin: 0;
+      padding: 20px;
+    }
+    details {
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      background: #fff;
+      padding: 10px;
+    }
+    summary {
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 18px;
+      padding: 5px;
+    }
+    .box {
+      background: #e3f2fd;
+      padding: 10px;
+      border-radius: 6px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+    }
+    textarea {
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-top: 5px;
+      padding: 5px;
+      resize: none;
+    }
+    ul {
+      margin: 5px 0 0 15px;
+    }
+  </style>
 </head>
 <body>
 
+<h2>Script Pesan Kredivo</h2>
+
+<!-- Hari 1–14 -->
 <details open>
-  <summary>Hari 1-14</summary>
-  <div class="section-header">
-    Tipe Transaksi<br>
-    Waktu Pengiriman & Isi Pesan<br>
-    Isi Chat
+  <summary>Hari 1–14</summary>
+
+  <div class="box">
+    <strong>PESAN PERTAMA</strong><br>
+    <textarea readonly rows="3">
+Hai Kak [nama user]! Aku [nama SPG] dari Kredivo yang bantu Kakak daftar akun Kakak waktu itu.
+    </textarea>
   </div>
 
-  <!-- Pesan Pertama -->
-  <div class="message-box">
-    <strong>PESAN PERTAMA</strong>
-    <p id="msg1">Hai Kak [nama user]! Aku [nama SPG] dari Kredivo yang bantu Kakak daftar akun Kakak waktu itu.</p>
-    <button class="copy-btn" onclick="copyText('msg1', this)">Salin</button>
+  <div class="box">
+    <strong>PESAN KEDUA</strong><br>
+    <textarea readonly rows="3">
+Aku mau tanya, Kak. Apakah Kakak udah coba pakai limit Kredivonya? Bisa dipakai buat transaksi sehari-hari juga lho, Kak.
+    </textarea>
   </div>
 
-  <!-- Pesan Kedua -->
-  <div class="message-box">
-    <strong>PESAN KEDUA</strong>
-    <p id="msg2">Aku mau tanya, Kak. Apakah Kakak udah coba pakai limit Kredivonya? Bisa dipakai buat transaksi sehari-hari juga lho, Kak.</p>
-    <button class="copy-btn" onclick="copyText('msg2', this)">Salin</button>
+  <div class="box">
+    <strong>PESAN PENUTUP</strong><br>
+    <textarea readonly rows="3">
+Kalau Kakak ada pertanyaan tentang cicilan dan penggunaan limit Kredivo, jangan ragu untuk kontak aku ya. Terima kasih, Kak.
+    </textarea>
   </div>
 
-  <!-- Pesan Penutup -->
-  <div class="message-box">
-    <strong>PESAN PENUTUP</strong>
-    <p id="msg3">Kalau Kakak ada pertanyaan tentang cicilan dan penggunaan limit Kredivo, jangan ragu untuk kontak aku ya. Terima kasih, Kak.</p>
-    <button class="copy-btn" onclick="copyText('msg3', this)">Salin</button>
+  <div class="box">
+    <strong>PESAN INTI</strong> (dikirim setelah dapat balasan pengguna ATAU jika tidak dibalas dalam 4 jam):<br>
+    <textarea readonly rows="5">
+Aku mau kasi info diskon nih, Kak. Ada diskon sampai 100rb kalau Kakak belanja di Indomaret/Alfamart dan pembayarannya pakai Kredivo. Aku kirimin gambarnya juga ya, Kak.
+    </textarea>
+    <p><b>Download Gambar:</b></p>
+    <ul>
+      <li><a href="https://kredivo.id/wp-content/uploads/2025/06/icon-keunggulan-1.png" download>Gambar 1</a></li>
+      <li><a href="https://kredivo.id/wp-content/uploads/2025/06/icon-keunggulan-3.png" download>Gambar 2</a></li>
+      <li><a href="https://kredivo.id/wp-content/uploads/2025/06/icon-keunggulan-2.png" download>Gambar 3</a></li>
+      <li><a href="https://kredivo.id/wp-content/uploads/2025/06/icon-keunggulan-4.png" download>Gambar 4</a></li>
+    </ul>
   </div>
 
-  <!-- Pesan Inti -->
-  <div class="message-box">
-    <strong>PESAN INTI <small>(dikirim setelah dapat balasan pengguna ATAU jika tidak dibalas dalam 4 jam):</small></strong>
-    <p id="msg4">Aku mau kasi info diskon nih, Kak. Ada diskon sampai 100rb kalau Kakak belanja di Indomaret/Alfamart dan pembayarannya pakai Kredivo. Aku kirimin gambarnya juga ya, Kak.</p>
-    <button class="copy-btn" onclick="copyText('msg4', this)">Salin</button>
-
-    <div style="margin-top: 10px; font-weight: bold;">Gambar</div>
-    <button class="download-btn" style="top:auto; bottom:15px;" onclick="downloadAllImages()">Unduh</button>
-    <div class="images">
-      <img src="https://kredivo.id/wp-content/uploads/2025/06/icon-keunggulan-1.png" alt="Gambar 1">
-      <img src="https://kredivo.id/wp-content/uploads/2025/06/icon-keunggulan-3.png" alt="Gambar 2">
-      <img src="https://kredivo.id/wp-content/uploads/2025/06/icon-keunggulan-2.png" alt="Gambar 3">
-    </div>
-  </div>
 </details>
-
-<script>
-function copyText(id, btn) {
-  const text = document.getElementById(id).innerText;
-  navigator.clipboard.writeText(text).then(() => {
-    btn.innerText = "Tersalin ✓";
-    setTimeout(() => btn.innerText = "Salin", 2000);
-  }).catch(() => alert("Gagal menyalin teks"));
-}
-
-function downloadAllImages() {
-  const urls = [
-    "https://kredivo.id/wp-content/uploads/2025/06/icon-keunggulan-1.png",
-    "https://kredivo.id/wp-content/uploads/2025/06/icon-keunggulan-3.png",
-    "https://kredivo.id/wp-content/uploads/2025/06/icon-keunggulan-2.png"
-  ];
-
-  let i = 0;
-  function downloadNext() {
-    if (i >= urls.length) return;
-    fetch(urls[i])
-      .then(res => res.blob())
-      .then(blob => {
-        const link = document.createElement("a");
-        link.href = URL.createObjectURL(blob);
-        link.download = urls[i].split("/").pop();
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        i++;
-        setTimeout(downloadNext, 800);
-      });
-  }
-  downloadNext();
-}
-</script>
 
 </body>
 </html>
